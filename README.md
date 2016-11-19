@@ -1,3 +1,13 @@
+# CS 5356 Final Project
+
+## Requirements
+* https://docs.google.com/document/d/1oog1sbBdm-d6KSmLjhbHjAUD8XDtdojVWpyFNwk-Fj8/edit#heading=h.5ec0zrrtnk5v
+
+## Reference
+* Vagrant: https://www.vagrantup.com/docs/getting-started/
+
+===
+
 # One and done
 
 Your mission, should you choose to accept it, is to create a single script that takes a brand new VM, and creates a fully-functioning production site, all by running a single command. In other words, setup should not require `vagrant ssh`, or any other interaction.
