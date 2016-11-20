@@ -5,6 +5,8 @@
 
 ## Reference
 * Vagrant: https://www.vagrantup.com/docs/getting-started/
+* ImageMagick with Python Example: https://github.com/jinpark/imageresizer
+* ImageMagick Wand API Documentations: http://docs.wand-py.org/en/0.2.4/index.html
 
 ===
 
