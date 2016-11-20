@@ -1,0 +1,16 @@
+# NGINX config fil. To be ln -s at /etc/nginx/sites-available/ & /etc/nginx/sites-enabled/
+
+server {
+    listen 80;
+    server_name 172.28.128.3;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location /api/ {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+}

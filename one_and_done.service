@@ -1,0 +1,17 @@
+# Gunicorn config file
+
+[Unit]
+Description=Gunicorn instance to serve one_and_done
+After=network.target
+
+[Service]
+User=vagrant
+Group=www-data
+WorkingDirectory=/vagrant/
+Environment="PATH=/vagrant/"
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 -m 007 --log-level debug wsgi:app
+#if testing locally, change localhost to 0.0.0.0
+
+
+[Install]
+WantedBy=multi-user.target

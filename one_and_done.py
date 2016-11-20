@@ -17,7 +17,7 @@ import commands
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def home():
 	return "To use the API, the URL must be `images.chriswang.tech/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png`."
 
 @app.route("/api/num_colors")

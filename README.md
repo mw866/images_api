@@ -5,8 +5,26 @@
 
 ## Reference
 * Vagrant: https://www.vagrantup.com/docs/getting-started/
+
 * ImageMagick with Python Example: https://github.com/jinpark/imageresizer
+
 * ImageMagick Wand API Documentations: http://docs.wand-py.org/en/0.2.4/index.html
+
+* Flask Applications with Gunicorn and Nginx on Ubuntu 16.04: https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04
+
+* Gunicorn config: http://docs.gunicorn.org/en/stable/settings.html#server-socket
+
+* UFW config: https://help.ubuntu.com/community/UFW
+
+## Debugging Nginx
+
+* Log location: /var/log/nginx/error.log 
+
+* Writing the Debugging Log to a File: https://www.nginx.com/resources/admin-guide/debug/#error_log_file
+
+* Test new Nginx config: sudo nginx -t && sudo service nginx restart
+
+
 
 ===
 
