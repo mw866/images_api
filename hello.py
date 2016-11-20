@@ -7,6 +7,7 @@ from wand.image import Image, GRAVITY_TYPES
 from wand.exceptions import MissingDelegateError
 from urlparse import urlparse 
 from tempfile import NamedTemporaryFile
+import commands
 # from shutil import copyfileobj
 # from functools import wraps, update_wrapper
 # from datetime import datetime
@@ -32,14 +33,16 @@ def num_colors():
     except:
         app.logger.exception("Error while getting url: " + url)
         abort(400, "Error while getting url: " + url)
-
-	
-  
+ 
     try:
         with Image(file=StringIO(r.content)) as img:
             temp_file = NamedTemporaryFile(mode='w+b',suffix=img.format)
             img.save(file=temp_file)
-            return temp_file.name
+            print temp_file.name
+            color_count = commands.getoutput("identify -format %k "+temp_file.name)
+            print color_count
+            return color_count
+
             # if query_string.get('type') in ['jpeg', 'jpg', 'png', 'pjeg']:
             #     img.format = query_string.get('type')
 

@@ -5,7 +5,7 @@ set -x
 
 echo "Provisioning starts!"
 apt-get update
-apt-get install -y git python-pip nginx libmagickwand-dev
+apt-get install -y git python-pip nginx imagemagick libmagickwand-dev
 #To delete: apt-get install python-dev 
 pip install --upgrade pip
 pip install -r requirements.txt
