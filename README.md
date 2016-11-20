@@ -1,6 +1,8 @@
 # CS 5356 Final Project
 By Chris Wang (mw866@cornell.edu)
+
 Description: An API based on Flask, Gunicorn and NGINX
+
 Usage: <domain>/api/num_colors?src=<imageurl>
 
 ## Architecture
@@ -28,9 +30,13 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * Gunicorn config: http://docs.gunicorn.org/en/stable/settings.html#server-socket
 
+ *Gunicorn accept Nginx forwarding: http://docs.gunicorn.org/en/stable/deploy.html
+
 * UFW config: https://help.ubuntu.com/community/UFW
 
-* NGINX Load Balancing: https://www.digitalocean.com/community/tutorials/how-to-set-up-nginx-load-balancing
+* NGINX Load Balancing config: https://www.nginx.com/resources/admin-guide/load-balancer/
+
+* Vagrant Network config: https://www.vagrantup.com/docs/networking/private_network.html
 
 ## Debugging Nginx
 
