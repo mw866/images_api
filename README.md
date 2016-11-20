@@ -18,12 +18,11 @@
 
 ## Debugging Nginx
 
-* Log location: /var/log/nginx/error.log 
+* Writing the NGINX Debugging Log to a File: https://www.nginx.com/resources/admin-guide/debug/#error_log_file
 
-* Writing the Debugging Log to a File: https://www.nginx.com/resources/admin-guide/debug/#error_log_file
+* Test new NGINX config: $sudo nginx -t && sudo service nginx restart
 
-* Test new Nginx config: sudo nginx -t && sudo service nginx restart
-
+# See log in real time: $tail -f file-name.log
 
 
 ===

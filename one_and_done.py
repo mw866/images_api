@@ -1,18 +1,12 @@
-from flask import Flask
-from flask import send_file, request, abort, jsonify, send_from_directory, make_response, redirect, current_app
+from flask import Flask, request, abort,  make_response, redirect
 import os
 import requests
 from StringIO import StringIO
-from wand.image import Image, GRAVITY_TYPES
+from wand.image import Image
 from wand.exceptions import MissingDelegateError
 from urlparse import urlparse 
 from tempfile import NamedTemporaryFile
 import commands
-# from shutil import copyfileobj
-# from functools import wraps, update_wrapper
-# from datetime import datetime
-# import logging
-# from gevent import monkey; monkey.patch_all()
 
 app = Flask(__name__)
 
@@ -36,7 +30,7 @@ def num_colors():
 			temp_file = NamedTemporaryFile(mode='w+b',suffix=img.format, delete=False)
 			img.save(file=temp_file)
 			temp_file.seek(0,0)
-			command = "identify -format %k "+temp_file.name
+			command = "/usr/bin/identify -format %k "+temp_file.name
 			temp_file.close()
 			print command
 			color_count = commands.getoutput(command)

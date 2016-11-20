@@ -1,14 +1,9 @@
 Icon*
-
+*.log
 .vagrant
-
 *.pid
-
 __pycache__/
 *.py[cod]
 *$py.class
 .cache/
-*.db
-*.db3
-*.sqlite
-*.sqlite3
+
