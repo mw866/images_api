@@ -7,7 +7,9 @@ from wand.exceptions import MissingDelegateError
 from urlparse import urlparse 
 from tempfile import NamedTemporaryFile
 import commands
+import datetime
 
+url_tmpfile_dict = {}
 app = Flask(__name__)
 
 @app.route("/")
@@ -16,27 +18,30 @@ def home():
 
 @app.route("/api/num_colors")
 def num_colors():
+	global url_tmpfile_dict 
+	tmpfilepath = ""
 	url = request.args.get('src')
-	try:
-		r = requests.get(url, timeout=1)
-		filename, file_ext = os.path.splitext(os.path.basename(urlparse(url).path))
+	# if not cached
+	if url not in url_tmpfile_dict:
+		app.logger.info("cache: miss")
+		r = requests.get(url, timeout=0.1)
+		f, file_ext = os.path.splitext(os.path.basename(urlparse(url).path))
 		if 'image' not in r.headers['content-type']:
 			app.logger.error(url + " is not an image.")
 			abort(400, url + " is not an image.")
-	except:
-		app.logger.exception("Error while getting url: " + url)
-	try:
 		with Image(file=StringIO(r.content)) as img:
-			temp_file = NamedTemporaryFile(mode='w+b',suffix=img.format, delete=False)
-			img.save(file=temp_file)
-			temp_file.seek(0,0)
-			command = "/usr/bin/identify -format %k "+temp_file.name
-			color_count = commands.getoutput(command)
-			temp_file.close()
-			return color_count
-	except MissingDelegateError:
-		abort(400, 'Image is unusable')
-
+			with  NamedTemporaryFile(mode='w+b',suffix=img.format, delete=False) as temp_file:
+				img.save(file=temp_file)
+				temp_file.seek(0,0)
+				url_tmpfile_dict[url] = temp_file.name
+				tmpfilepath = temp_file.name
+	# if cached
+	else: #
+		app.logger.info("cache: hit")
+		tmpfilepath = url_tmpfile_dict[url]
+	command = "/usr/bin/identify -format %k " + tmpfilepath
+	color_count = commands.getoutput(command)
+	return color_count
 
 if __name__ == "__main__":
 	app.run() #if run locally ane exposed to public network

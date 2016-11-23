@@ -65,6 +65,9 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * .1 address cannot be used because of conflicts with host machine's vboxnet1 interface
 
+# Parameters can be tuned
+Gunicorn: --worker 3
+Python Requests: requests.get(timeout = 0.01)
 
 ## Test Results
 $siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://192.168.0.2/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
@@ -96,4 +99,33 @@ Successful transactions:         417
 Failed transactions:	           0
 Longest transaction:	        0.69
 Shortest transaction:	        0.30
+
+###Local: 1xWebserver Gunicorn --workers 3 after turned on caching
+Transactions:		        1169 hits
+Availability:		      100.00 %
+Elapsed time:		       59.79 secs
+Data transferred:	        0.00 MB
+Response time:		        0.15 secs
+Transaction rate:	       19.55 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		        2.99
+Successful transactions:        1169
+Failed transactions:	           0
+Longest transaction:	        0.33
+Shortest transaction:	        0.11
+
+## Reference Results
+### EC2 instance $siege --time 10s https://s3.amazonaws.com/startup-systems-final-images/6461517483.jpg
+Transactions:		          82 hits
+Availability:		      100.00 %
+Elapsed time:		        9.32 secs
+Data transferred:	        9.49 MB
+Response time:		        0.91 secs
+Transaction rate:	        8.80 trans/sec
+Throughput:		        1.02 MB/sec
+Concurrency:		        8.03
+Successful transactions:          82
+Failed transactions:	           0
+Longest transaction:	        1.28
+Shortest transaction:	        0.69
 

@@ -21,9 +21,6 @@ sudo cp /vagrant/one_and_done.service /etc/systemd/system/ #ln -s will not work
 sudo systemctl start one_and_done.service
 sudo systemctl enable one_and_done.service
 
-# #Config NGINX:
-# sudo ln -s /vagrant/one_and_done /etc/nginx/sites-available/
-# sudo ln -s /vagrant/one_and_done /etc/nginx/sites-enabled/
-# sudo systemctl restart nginx
+
 
 echo "Provisioning complete!"
