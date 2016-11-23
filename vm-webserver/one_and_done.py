@@ -31,10 +31,8 @@ def num_colors():
 			img.save(file=temp_file)
 			temp_file.seek(0,0)
 			command = "/usr/bin/identify -format %k "+temp_file.name
-			temp_file.close()
-			print command
 			color_count = commands.getoutput(command)
-			print color_count			
+			temp_file.close()
 			return color_count
 	except MissingDelegateError:
 		abort(400, 'Image is unusable')

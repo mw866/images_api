@@ -2,12 +2,12 @@
 
 
 upstream backend {
-    server 172.28.128.5:8000; #e.g. server 192.168.0.7:8000 fail_timeout=0;
-}
+    server 192.168.0.3:8000; 
+    }
 
 server {
     listen 80;
-    server_name 172.28.128.4; 
+    server_name 192.168.0.2; 
 
     access_log /vagrant/nginx_access.log;
     error_log /vagrant/nginx_error.log;

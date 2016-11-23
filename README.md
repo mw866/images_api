@@ -10,9 +10,9 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * CDN: TBD
 
-* Reverse Proxy & Load Balancer (x1 VM): NGINX
+* Reverse Proxy & Load Balancer (x1 VM, 192.168.0.2): NGINX
 
-* Web Server (x3 VM): Gunicorn
+* Web Server (x3 VM,  192.168.0.4-5): Gunicorn
 
 * Web Framework: Flask
 
@@ -36,7 +36,13 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * NGINX Load Balancing config: https://www.nginx.com/resources/admin-guide/load-balancer/
 
-* Vagrant Network config: https://www.vagrantup.com/docs/networking/private_network.html
+* Vagrant Network config: 
+https://www.safaribooksonline.com/library/view/vagrant-up-and/9781449336103/ch04.html
+https://www.vagrantup.com/docs/virtualbox/networking.html
+
+* VirtualBox Internal Network: https://www.virtualbox.org/manual/ch06.html#network_internal
+
+
 
 ## Troubleshooting Nginx
 
@@ -52,6 +58,42 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * Does not receive from NGINX: --bind 0.0.0.0:8000 
 
+## Troubleshooting Vagrant/Linux
+* Network testing: Vagrant by default creates multiple interfaces, hence use ping -I <specific hostonly/private interface> to avoid confusion.
+
+* Network interface config: /etc/network/interfaces
+
+* .1 address cannot be used because of conflicts with host machine's vboxnet1 interface
 
 
+## Test Results
+$siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://192.168.0.2/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
+
+###Local: 1xWebserver Gunicorn --workers 3 
+Transactions:		         406 hits
+Availability:		      100.00 %
+Elapsed time:		       59.34 secs
+Data transferred:	        0.00 MB
+Response time:		        0.44 secs
+Transaction rate:	        6.84 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		        2.99
+Successful transactions:         406
+Failed transactions:	           0
+Longest transaction:	        0.74
+Shortest transaction:	        0.30
+ 
+###Local: 1xWebserver Gunicorn --workers 4 
+Transactions:		         417 hits
+Availability:		      100.00 %
+Elapsed time:		       59.30 secs
+Data transferred:	        0.00 MB
+Response time:		        0.42 secs
+Transaction rate:	        7.03 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		        2.99
+Successful transactions:         417
+Failed transactions:	           0
+Longest transaction:	        0.69
+Shortest transaction:	        0.30
 

@@ -7,7 +7,7 @@ echo "Provisioning starts!"
 
 apt-get update
 # apt-get install -y python-pip  python-dev imagemagick libmagickwand-dev
-apt-get install -y nginx
+apt-get install -y nginx, lynx
 # pip install --upgrade pip
 # pip install -r /vagrant/requirements.txt
 
