@@ -9,9 +9,10 @@ User=vagrant
 Group=www-data
 WorkingDirectory=/vagrant/
 Environment="PATH=/vagrant/"
-ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 192.168.0.1 -forwarded-allow-ips="192.168.0.1" -m 007 --log-level debug --access-logfile /vagrant/gunicorn_access.log --error-logfile /vagrant/gunicorn_error.log  wsgi:app 
-#ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 -m 007 --log-level debug --access-logfile /vagrant/gunicorn_access.log --error-logfile /vagrant/gunicorn_error.log  wsgi:app 
-#if testing locally, change localhost to 0.0.0.0
+
+ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 --forwarded-allow-ips=* -m 007 --log-level debug  wsgi:app 
+
+#ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 --forwarded-allow-ips="172.28.128.4" -m 007 --log-level debug --access-logfile /vagrant/gunicorn_access.log --error-logfile /vagrant/gunicorn_error.log  wsgi:app 
 
 [Install]
 WantedBy=multi-user.target

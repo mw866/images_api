@@ -2,12 +2,12 @@
 
 
 upstream backend {
-    server 192.168.0.2; #e.g. server 192.168.0.7:8000 fail_timeout=0;
+    server 172.28.128.5:8000; #e.g. server 192.168.0.7:8000 fail_timeout=0;
 }
 
 server {
     listen 80;
-    server_name 172.28.128.3; 
+    server_name 172.28.128.4; 
 
     access_log /vagrant/nginx_access.log;
     error_log /vagrant/nginx_error.log;
@@ -15,10 +15,14 @@ server {
     location / {
         include proxy_params;
         proxy_pass http://backend;
+        proxy_set_header   Host             $host;
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header   X-Forwarded-For  $proxy_add_x_forwarded_for;
     }
 
     location /api/ {
         include proxy_params;
         proxy_pass http://backend/api/;
+
     }
 }

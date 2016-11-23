@@ -38,7 +38,7 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * Vagrant Network config: https://www.vagrantup.com/docs/networking/private_network.html
 
-## Debugging Nginx
+## Troubleshooting Nginx
 
 * Writing the NGINX Debugging Log to a File: https://www.nginx.com/resources/admin-guide/debug/#error_log_file
 
@@ -46,6 +46,11 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * See log in real time: $tail -f file-name.log
 
+## Troubleshooting Gunicorn
+
+* ImportError: No module named wsgi: Run within /vagrant/
+
+* Does not receive from NGINX: --bind 0.0.0.0:8000 
 
 
 
