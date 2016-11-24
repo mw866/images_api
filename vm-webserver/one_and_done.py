@@ -1,4 +1,4 @@
-from flask import Flask, request, abort,  make_response, redirect
+from flask import Flask, request, abort
 import os
 import requests
 from StringIO import StringIO
@@ -6,12 +6,12 @@ from wand.image import Image
 from urlparse import urlparse 
 from tempfile import NamedTemporaryFile
 import commands
-import datetime
+# import datetime
 import logging
 
 
 url_tmpfile_dict = {}
-# app = Flask(__name__)	
+app = Flask(__name__)	
 # handler = logging.FileHandler('flask.log')
 # handler.setLevel(logging.INFO)
 # app.logger.addHandler(handler)

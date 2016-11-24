@@ -10,9 +10,9 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * CDN: TBD
 
-* Reverse Proxy & Load Balancer (x1 VM, 192.168.0.100): NGINX
+* Reverse Proxy & Load Balancer (x1 VM, 172.31.31.20): NGINX
 
-* Web Server (x3 VM,  192.168.0.101-103): Gunicorn
+* Web Server (x3 VM,  172-31-30-117): Gunicorn
 
 * Web Framework: Flask
 

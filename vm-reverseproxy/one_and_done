@@ -2,8 +2,6 @@
 
 upstream backend {
     server 192.168.0.101:8000; 
-    server 192.168.0.102:8000; 
-    server 192.168.0.103:8000; 
     }
 
 server {
