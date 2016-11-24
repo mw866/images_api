@@ -50,6 +50,7 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * AWSCLI Output Format: http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html
 
+* EC2 Public IP Addressing: ttp://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#differences
 
 ## Troubleshooting Nginx
 
@@ -80,6 +81,7 @@ Python Requests: requests.get(timeout = 0.01)
 ## Troubleshooting AWS
 * "An error occurred (InvalidParameterValue) when calling the RunInstances operation: Address 192.168.0.2 is in subnet's reserved address range": The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html
 
+* No Public IP Address for SSH: Enable Auto-assign Public IP in VPC Console
 
 ## Test Results
 $siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://192.168.0.2/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
