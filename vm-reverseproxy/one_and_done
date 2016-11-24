@@ -10,8 +10,8 @@ server {
     listen 80;
     server_name 192.168.0.2; 
 
-    access_log /vagrant/nginx_access.log;
-    error_log /vagrant/nginx_error.log;
+    #access_log /vagrant/nginx_access.log;
+    #error_log /vagrant/nginx_error.log;
 
     location / {
         include proxy_params;
