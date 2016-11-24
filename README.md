@@ -42,7 +42,7 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * VirtualBox Internal Network: https://www.virtualbox.org/manual/ch06.html#network_internal
 
-
+* Flask Logging: http://flask.pocoo.org/docs/0.11/errorhandling/
 
 ## Troubleshooting Nginx
 
