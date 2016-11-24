@@ -10,9 +10,9 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 * CDN: TBD
 
-* Reverse Proxy & Load Balancer (x1 VM, 192.168.0.2): NGINX
+* Reverse Proxy & Load Balancer (x1 VM, 192.168.0.100): NGINX
 
-* Web Server (x3 VM,  192.168.0.4-5): Gunicorn
+* Web Server (x3 VM,  192.168.0.101-103): Gunicorn
 
 * Web Framework: Flask
 
@@ -44,6 +44,13 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * Flask Logging: http://flask.pocoo.org/docs/0.11/errorhandling/
 
+* Launch EC2 using AWSCLI: http://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html
+
+* Autocomplete on AWSCLI: http://docs.aws.amazon.com/cli/latest/userguide/cli-command-completion.html
+
+* AWSCLI Output Format: http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html
+
+
 ## Troubleshooting Nginx
 
 * Writing the NGINX Debugging Log to a File: https://www.nginx.com/resources/admin-guide/debug/#error_log_file
@@ -68,6 +75,11 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 # Parameters can be tuned
 Gunicorn: --worker 3
 Python Requests: requests.get(timeout = 0.01)
+
+
+## Troubleshooting AWS
+* "An error occurred (InvalidParameterValue) when calling the RunInstances operation: Address 192.168.0.2 is in subnet's reserved address range": The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html
+
 
 ## Test Results
 $siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://192.168.0.2/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
