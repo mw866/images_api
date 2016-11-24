@@ -1,7 +1,7 @@
 # NGINX config fil. To be ln -s at /etc/nginx/sites-available/ & /etc/nginx/sites-enabled/
 
 upstream backend {
-    server 192.168.0.101:8000; 
+    server 172.31.30.117:8000; 
     }
 
 server {
