@@ -88,6 +88,8 @@ Python Requests: requests.get(timeout = 0.01)
 
 * ConnectTimeout: HTTPSConnectionPool(host='s3.amazonaws.com', port=443): Enable HTTP & HTTPS in Inbound ACL
 
+* Change Computer Name in Ubuntu: https://aws.amazon.com/premiumsupport/knowledge-center/linux-static-hostname/
+
 ## Test Results
 $siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://<url>/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
 
