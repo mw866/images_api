@@ -5,7 +5,9 @@ Description: An API based on Flask, Gunicorn and NGINX
 
 Usage: <domain>/api/num_colors?src=<imageurl>
 
-imageurl: https://github.com/startup-systems/loadtest/blob/master/images.csv
+Example: http://35.162.8.41/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
+
+Benchmark: http://images-aws.afeld.me/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
 
 ## Architecture
 * DNS: TBD
@@ -88,7 +90,7 @@ Python Requests: requests.get(timeout = 0.01)
 * ConnectTimeout: HTTPSConnectionPool(host='s3.amazonaws.com', port=443): Enable HTTP & HTTPS in Inbound ACL
 
 ## Test Results
-$siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://192.168.0.2/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
+$siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://<url>/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
 
 ###Local: 1xWebserver Gunicorn --workers 3 
 Transactions:		         406 hits
@@ -133,6 +135,18 @@ Longest transaction:	        0.33
 Shortest transaction:	        0.11
 
 ### AWS: 1xWebserver Gunicorn --workers 3 after turned on caching
+Transactions:		         877 hits
+Availability:		      100.00 %
+Elapsed time:		       59.36 secs
+Data transferred:	        0.00 MB
+Response time:		        0.20 secs
+Transaction rate:	       14.77 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		        2.99
+Successful transactions:         877
+Failed transactions:	           0
+Longest transaction:	        0.68
+Shortest transaction:	        0.18
 
 ## Reference Results
  EC2 instance $siege --time 10s https://s3.amazonaws.com/startup-systems-final-images/6461517483.jpg
