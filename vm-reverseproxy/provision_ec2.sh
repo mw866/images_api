@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Run the folling before executing this shell script
+# sudo -s
 # cd ~
 # git clone https://github.com/mw866/one-and-done.git
 
