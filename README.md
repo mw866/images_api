@@ -19,9 +19,9 @@ Logs files:
 
 * CDN: TBD
 
-* Reverse Proxy & Load Balancer (x1 VM, 172.31.31.20): NGINX
+* Reverse Proxy & Load Balancer (x1 VM): NGINX
 
-* Web Server (x3 VM,  172-31-30-117): Gunicorn
+* Web Server (x3 VM): Gunicorn
 
 * Web Framework: Flask
 
@@ -58,7 +58,7 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * VirtualBox Internal Network: https://www.virtualbox.org/manual/ch06.html#network_internal
 
-### AWS 
+### AWS  EC2
 
 * Launch EC2 using AWSCLI: http://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html
 
@@ -67,6 +67,10 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 * AWS CLI Output Format: http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html
 
 * EC2 Public IP Addressing: ttp://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#differences
+
+### AWS Route 53
+
+* Routing Traffic to an Amazon EC2 Instance: http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html
 
 ## Troubleshooting 
 
