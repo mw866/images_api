@@ -11,14 +11,14 @@ set -x
 
 echo "Provisioning Reverse Proxy on EC2!"
 
-apt-get update
-apt-get install -y nginx lynx 
+sudo apt-get update
+sudo apt-get install -y nginx lynx 
 
 #Config NGINX:
-cd ./one-and-done/vm-reverseproxy
-ln -s  "$(pwd)/one_and_done" /etc/nginx/sites-available/
-ln -s "$(pwd)/one_and_done" /etc/nginx/sites-enabled/
-systemctl restart nginx
+sudo cd ./one-and-done/vm-reverseproxy
+sudo ln -s  "$(pwd)/one_and_done" /etc/nginx/sites-available/
+sudo ln -s "$(pwd)/one_and_done" /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
 
 
 echo "Provisioning complete!"

@@ -13,10 +13,10 @@ set -x
 echo "Provisioning starts!"
 
 
-apt-get update
-apt-get install -y python-pip  python-dev imagemagick libmagickwand-dev lynx
-pip install --upgrade pip
-pip install -r requirements.txt
+sudo apt-get update
+sudo apt-get install -y python-pip  python-dev imagemagick libmagickwand-dev lynx
+sudo pip install --upgrade pip
+sudo pip install -r requirements.txt
 
 #For debugging locallly:
 # export FLASK_APP=one_and_done.py
@@ -28,6 +28,6 @@ sudo cp ./one_and_done.service /etc/systemd/system/ #ln -s will not work
 sudo systemctl start one_and_done.service
 sudo systemctl enable one_and_done.service
 
-
+sudo mkdir /var/log/gunicorn
 
 echo "Provisioning complete!"

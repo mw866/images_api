@@ -7,6 +7,12 @@ Usage: <domain>/api/num_colors?src=<imageurl>
 
 Example: http://35.162.8.41/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
 
+Remember to build the runtime cache: $siege -t1m --concurrent=20 -b -i --file=./output/chris/siege_urls.txt
+
+Logs files:
+* NGINX: tail -f /var/log/nginx/error.log
+
+* Gunicorn: tail -f /var/log/gunicorn/error.log
 
 ## Architecture
 * DNS: TBD
