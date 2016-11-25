@@ -3,9 +3,9 @@ By Chris Wang (mw866@cornell.edu)
 
 Description: An API based on Flask, Gunicorn and NGINX
 
-Usage: <domain>/api/num_colors?src=<imageurl>
+Usage: http://images.chriswang.tech/api/num_colors?src=<imageurl>
 
-Example: http://35.162.8.41/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
+Example: http://images.chriswang.tech/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
 
 Remember to build the runtime cache: $siege -t1m --concurrent=20 -b -i --file=./output/chris/siege_urls.txt
 
