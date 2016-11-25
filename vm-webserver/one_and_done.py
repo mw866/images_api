@@ -39,15 +39,12 @@ def num_colors():
 				temp_file.seek(0,0)
 				url_tmpfile_dict[url] = temp_file.name
 				tmpfilepath = temp_file.name
-		
+	else: 	# if cached
+		app.logger.info("cache: hit at")
 		tmpfilepath = url_tmpfile_dict[url]
 	app.logger.info(tmpfilepath)
 	command = "/usr/bin/identify -format %k " + tmpfilepath
 	color_count = commands.getoutput(command)
-	# if cached
-	else: #
-		app.logger.info("cache: hit at")
-
 	return color_count
 
 if __name__ == "__main__":
