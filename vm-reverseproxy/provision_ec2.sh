@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Run the folling before executing this shell script
+# [Prerequisite] Run the folling before executing this shell script
+# cd ./vm-reverseproxy/
 # sudo -s
 # cd ~
 # git clone https://github.com/mw866/one-and-done.git

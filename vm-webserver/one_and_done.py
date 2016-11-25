@@ -28,7 +28,7 @@ def num_colors():
 	# if not cached
 	if url not in url_tmpfile_dict:
 		app.logger.info("cache: miss")
-		r = requests.get(url, timeout=0.1)
+		r = requests.get(url, timeout=5)
 		f, file_ext = os.path.splitext(os.path.basename(urlparse(url).path))
 		if 'image' not in r.headers['content-type']:
 			app.logger.error(url + " is not an image.")

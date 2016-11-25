@@ -86,7 +86,7 @@ Python Requests: requests.get(timeout = 0.01)
 
 * No Public IP Address for SSH: Enable Auto-assign Public IP in VPC Console
 
-* ConnectTimeout: HTTPSConnectionPool(host='s3.amazonaws.com', port=443): Enable HTTP & HTTPS in Inbound ACL
+* ConnectTimeout: HTTPSConnectionPool(host='s3.amazonaws.com', port=443): (a) Enable HTTP & HTTPS in Inbound ACL (b) Increase the timeout in requests.get (http://docs.python-requests.org/en/master/user/quickstart/#timeouts)
 
 * Change Computer Name in Ubuntu: https://aws.amazon.com/premiumsupport/knowledge-center/linux-static-hostname/
 
@@ -149,6 +149,21 @@ Failed transactions:	           0
 Longest transaction:	        0.68
 Shortest transaction:	        0.18
 
+### AWS: 2x Webserver Gunicorn --workers 3 after turned on caching
+
+Transactions:		         894 hits
+Availability:		      100.00 %
+Elapsed time:		       59.72 secs
+Data transferred:	        0.00 MB
+Response time:		        0.20 secs
+Transaction rate:	       14.97 trans/sec
+Throughput:		        0.00 MB/sec
+Concurrency:		        2.99
+Successful transactions:         894
+Failed transactions:	           0
+Longest transaction:	        1.48
+Shortest transaction:	        0.18
+
 ## Benchmark Results: 
 
 http://images-aws.afeld.me/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
@@ -164,7 +179,6 @@ Successful transactions:         353
 Failed transactions:	           0
 Longest transaction:	        0.84
 Shortest transaction:	        0.36
-
 
 
 ## Reference Results
