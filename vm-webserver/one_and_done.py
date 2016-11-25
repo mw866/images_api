@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-	return "<a href="http://images.chriswang.tech/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png">To use the API, the URL must be '/api/num_colors?src=' </a>"
+	return "<a href='http://images.chriswang.tech/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png'>Click here to try this API example.</a>"
 
 @app.route("/api/num_colors")
 def num_colors():
