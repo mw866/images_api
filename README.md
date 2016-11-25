@@ -15,9 +15,7 @@ Logs files:
 * Gunicorn: tail -f /var/log/gunicorn/error.log
 
 ## Architecture
-* DNS: TBD
-
-* CDN: TBD
+* DNS: AWS Route 53
 
 * Reverse Proxy & Load Balancer (x1 VM): NGINX
 
@@ -95,9 +93,6 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * .1 address cannot be used because of conflicts with host machine's vboxnet1 interface
 
-# Parameters can be tuned
-Gunicorn: --worker 3
-Python Requests: requests.get(timeout = 0.01)
 
 ### AWS
 * "An error occurred (InvalidParameterValue) when calling the RunInstances operation: Address 192.168.0.2 is in subnet's reserved address range": The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html
@@ -108,10 +103,16 @@ Python Requests: requests.get(timeout = 0.01)
 
 * Change Computer Name in Ubuntu: https://aws.amazon.com/premiumsupport/knowledge-center/linux-static-hostname/
 
-## Test Results
-$siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://<url>/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
+## Performances
+### Siege command used by Load Test script
+$siege -t1m --concurrent=3 -b -i --file=./output/chris/siege_urls.txt --log=./output/chris/siege.log --user-agent=Magic Browser
 
-## Benchmark Results: 
+
+### Parameters can be tuned
+Gunicorn: --worker 3
+Python Requests: requests.get(timeout = 0.01)
+
+### Benchmark Results: 
 
 http://images-aws.afeld.me/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
 Transactions:		         353 hits
@@ -128,7 +129,7 @@ Longest transaction:	        0.84
 Shortest transaction:	        0.36
 
 
-## Reference Results
+### Reference Results
  EC2 instance $siege --time 10s https://s3.amazonaws.com/startup-systems-final-images/6461517483.jpg
 Transactions:		          82 hits
 Availability:		      100.00 %
