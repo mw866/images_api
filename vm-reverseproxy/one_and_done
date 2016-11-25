@@ -3,6 +3,7 @@
 upstream backend {
     server 172.31.30.117:8000; #webserver_1
     server 172.31.21.107:8000; #webserver_2
+    server 172.31.16.159:8000; #webserver_3
     }
 
 server {

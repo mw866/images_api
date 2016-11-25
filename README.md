@@ -22,14 +22,18 @@ Example: http://35.162.8.41/api/num_colors?src=https://www.wikipedia.org/portal/
 ## Requirements
 * https://docs.google.com/document/d/1oog1sbBdm-d6KSmLjhbHjAUD8XDtdojVWpyFNwk-Fj8/edit#heading=h.5ec0zrrtnk5v
 
-## Reference
-* Vagrant: https://www.vagrantup.com/docs/getting-started/
+## References
+
+### ImageMagick
 
 * ImageMagick with Python Example: https://github.com/jinpark/imageresizer
 
 * ImageMagick Wand API Documentations: http://docs.wand-py.org/en/0.2.4/index.html
 
+### Flask with Gunicorn
 * Flask Applications with Gunicorn and Nginx on Ubuntu 16.04: https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04
+
+* Flask Logging: http://flask.pocoo.org/docs/0.11/errorhandling/
 
 * Gunicorn config: http://docs.gunicorn.org/en/stable/settings.html#server-socket
 
@@ -37,25 +41,30 @@ Example: http://35.162.8.41/api/num_colors?src=https://www.wikipedia.org/portal/
 
 * UFW config: https://help.ubuntu.com/community/UFW
 
+### NGINX
+
 * NGINX Load Balancing config: https://www.nginx.com/resources/admin-guide/load-balancer/
 
+### Vagrant
 * Vagrant Network config: 
 https://www.safaribooksonline.com/library/view/vagrant-up-and/9781449336103/ch04.html
 https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * VirtualBox Internal Network: https://www.virtualbox.org/manual/ch06.html#network_internal
 
-* Flask Logging: http://flask.pocoo.org/docs/0.11/errorhandling/
+### AWS 
 
 * Launch EC2 using AWSCLI: http://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html
 
-* Autocomplete on AWSCLI: http://docs.aws.amazon.com/cli/latest/userguide/cli-command-completion.html
+* AWSCLI Autocomplete: http://docs.aws.amazon.com/cli/latest/userguide/cli-command-completion.html
 
-* AWSCLI Output Format: http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html
+* AWS CLI Output Format: http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html
 
 * EC2 Public IP Addressing: ttp://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#differences
 
-## Troubleshooting Nginx
+## Troubleshooting 
+
+### Nginx
 
 * Writing the NGINX Debugging Log to a File: https://www.nginx.com/resources/admin-guide/debug/#error_log_file
 
@@ -63,7 +72,7 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * See log in real time: $tail -f file-name.log
 
-## Troubleshooting Gunicorn
+### Gunicorn
 
 * ImportError: No module named wsgi: Run within /vagrant/
 
@@ -80,8 +89,7 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 Gunicorn: --worker 3
 Python Requests: requests.get(timeout = 0.01)
 
-
-## Troubleshooting AWS
+### AWS
 * "An error occurred (InvalidParameterValue) when calling the RunInstances operation: Address 192.168.0.2 is in subnet's reserved address range": The first four IP addresses and the last IP address in each subnet CIDR block are not available for you to use, and cannot be assigned to an instance: http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Subnets.html
 
 * No Public IP Address for SSH: Enable Auto-assign Public IP in VPC Console
@@ -92,77 +100,6 @@ Python Requests: requests.get(timeout = 0.01)
 
 ## Test Results
 $siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://<url>/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
-
-###Local: 1xWebserver Gunicorn --workers 3 
-Transactions:		         406 hits
-Availability:		      100.00 %
-Elapsed time:		       59.34 secs
-Data transferred:	        0.00 MB
-Response time:		        0.44 secs
-Transaction rate:	        6.84 trans/sec
-Throughput:		        0.00 MB/sec
-Concurrency:		        2.99
-Successful transactions:         406
-Failed transactions:	           0
-Longest transaction:	        0.74
-Shortest transaction:	        0.30
- 
-###Local: 1xWebserver Gunicorn --workers 4 
-Transactions:		         417 hits
-Availability:		      100.00 %
-Elapsed time:		       59.30 secs
-Data transferred:	        0.00 MB
-Response time:		        0.42 secs
-Transaction rate:	        7.03 trans/sec
-Throughput:		        0.00 MB/sec
-Concurrency:		        2.99
-Successful transactions:         417
-Failed transactions:	           0
-Longest transaction:	        0.69
-Shortest transaction:	        0.30
-
-###Local: 1xWebserver Gunicorn --workers 3 after turned on caching
-Transactions:		        1169 hits
-Availability:		      100.00 %
-Elapsed time:		       59.79 secs
-Data transferred:	        0.00 MB
-Response time:		        0.15 secs
-Transaction rate:	       19.55 trans/sec
-Throughput:		        0.00 MB/sec
-Concurrency:		        2.99
-Successful transactions:        1169
-Failed transactions:	           0
-Longest transaction:	        0.33
-Shortest transaction:	        0.11
-
-### AWS: 1xWebserver Gunicorn --workers 3 after turned on caching
-Transactions:		         877 hits
-Availability:		      100.00 %
-Elapsed time:		       59.36 secs
-Data transferred:	        0.00 MB
-Response time:		        0.20 secs
-Transaction rate:	       14.77 trans/sec
-Throughput:		        0.00 MB/sec
-Concurrency:		        2.99
-Successful transactions:         877
-Failed transactions:	           0
-Longest transaction:	        0.68
-Shortest transaction:	        0.18
-
-### AWS: 2x Webserver Gunicorn --workers 3 after turned on caching
-
-Transactions:		         894 hits
-Availability:		      100.00 %
-Elapsed time:		       59.72 secs
-Data transferred:	        0.00 MB
-Response time:		        0.20 secs
-Transaction rate:	       14.97 trans/sec
-Throughput:		        0.00 MB/sec
-Concurrency:		        2.99
-Successful transactions:         894
-Failed transactions:	           0
-Longest transaction:	        1.48
-Shortest transaction:	        0.18
 
 ## Benchmark Results: 
 

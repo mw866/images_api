@@ -22,7 +22,7 @@ def home():
 
 @app.route("/api/num_colors")
 def num_colors():
-	global url_tmpfile_dict 
+	global url_count_dict 
 	tmpfilepath = ""
 	url = request.args.get('src')
 	# if not cached
@@ -39,13 +39,15 @@ def num_colors():
 				temp_file.seek(0,0)
 				url_tmpfile_dict[url] = temp_file.name
 				tmpfilepath = temp_file.name
-	# if cached
-	else: #
-		app.logger.info("cache: hit at")
+		
 		tmpfilepath = url_tmpfile_dict[url]
 	app.logger.info(tmpfilepath)
 	command = "/usr/bin/identify -format %k " + tmpfilepath
 	color_count = commands.getoutput(command)
+	# if cached
+	else: #
+		app.logger.info("cache: hit at")
+
 	return color_count
 
 if __name__ == "__main__":
