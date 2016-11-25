@@ -5,6 +5,8 @@ Description: An API based on Flask, Gunicorn and NGINX
 
 Usage: <domain>/api/num_colors?src=<imageurl>
 
+imageurl: https://github.com/startup-systems/loadtest/blob/master/images.csv
+
 ## Architecture
 * DNS: TBD
 
@@ -83,6 +85,8 @@ Python Requests: requests.get(timeout = 0.01)
 
 * No Public IP Address for SSH: Enable Auto-assign Public IP in VPC Console
 
+* ConnectTimeout: HTTPSConnectionPool(host='s3.amazonaws.com', port=443): Enable HTTP & HTTPS in Inbound ACL
+
 ## Test Results
 $siege --time=1M --concurrent=3 -b -i --user-agent="Magic Browser" http://192.168.0.2/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png 
 
@@ -128,8 +132,10 @@ Failed transactions:	           0
 Longest transaction:	        0.33
 Shortest transaction:	        0.11
 
+### AWS: 1xWebserver Gunicorn --workers 3 after turned on caching
+
 ## Reference Results
-### EC2 instance $siege --time 10s https://s3.amazonaws.com/startup-systems-final-images/6461517483.jpg
+ EC2 instance $siege --time 10s https://s3.amazonaws.com/startup-systems-final-images/6461517483.jpg
 Transactions:		          82 hits
 Availability:		      100.00 %
 Elapsed time:		        9.32 secs
