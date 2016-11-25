@@ -13,10 +13,6 @@ sudo -s
 apt-get update
 apt-get install -y python-pip  python-dev imagemagick libmagickwand-dev lynx
 pip install --upgrade pip
-
-cd ~
-git clone https://github.com/mw866/one-and-done.git
-cd ./one-and-done/vm-reverseproxy
 pip install -r requirements.txt
 
 #For debugging locallly:
