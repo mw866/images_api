@@ -7,8 +7,8 @@ After=network.target
 [Service]
 User=vagrant
 Group=www-data
-WorkingDirectory=/vagrant/
-Environment="PATH=/vagrant/"
+WorkingDirectory=/one-and-done/
+Environment="PATH=/one-and-done/"
 
 ExecStart=/usr/local/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 --forwarded-allow-ips=* -m 007 --log-level debug --access-logfile /var/log/gunicorn/access.log --error-logfile /var/log/gunicorn/error.log  --daemon wsgi:app   
 
