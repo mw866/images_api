@@ -1,11 +1,16 @@
+_To people who fork my repo:_  
+The repo __will not__ work on your machine or AWS off-the-shelf without understanding of the design.  
+Although absolutely no guanrantee is offered, I'm happy to answer your questions :)
+
 # CS 5356 Final Project
-By Chris Wang (mw866@cornell.edu)
+By __Chris Wang__ (mw866@cornell.edu)
+
 
 Description: An API based on Flask, Gunicorn and NGINX
 
-Usage: http://images.chriswang.tech/api/num_colors?src=<imageurl>
+Usage: http://<hostname>/api/num_colors?src=<imageurl>
 
-Example: http://images.chriswang.tech/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
+Example: http://<hostname>/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
 
 Remember to build the runtime cache: $siege -t1m --concurrent=20 -b -i --file=./output/chris/siege_urls.txt
 
