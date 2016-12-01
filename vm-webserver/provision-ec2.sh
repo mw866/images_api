@@ -14,7 +14,7 @@ echo "Provisioning starts!"
 
 
 sudo apt-get update
-sudo apt-get install -y python-pip  python-dev imagemagick libmagickwand-dev lynx
+sudo apt-get install -y python-pip  python-dev imagemagick lynx
 sudo pip install --upgrade pip
 sudo pip install -r requirements.txt
 
