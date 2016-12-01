@@ -46,6 +46,10 @@ Logs files:
 
 * UFW config: https://help.ubuntu.com/community/UFW
 
+* Number of Gunicorn Workers:  http://docs.gunicorn.org/en/stable/design.html#how-many-workers
+
+
+
 ### NGINX
 
 * NGINX Load Balancing config: https://www.nginx.com/resources/admin-guide/load-balancer/
