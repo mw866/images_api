@@ -33,11 +33,7 @@ Logs files:
 
 ## References
 
-### ImageMagick
 
-* ImageMagick with Python Example: https://github.com/jinpark/imageresizer
-
-* ImageMagick Wand API Documentations: http://docs.wand-py.org/en/0.2.4/index.html
 
 ### Flask with Gunicorn
 * Flask Applications with Gunicorn and Nginx on Ubuntu 16.04: https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04
@@ -75,6 +71,17 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * Routing Traffic to an Amazon EC2 Instance: http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html
 
+### Requests
+* Do not save Image using the following API because it will tamper the integrity of the file. Instead, just use ''Requests.content'': http://docs.python-requests.org/en/latest/api/
+
+~~### ImageMagick and PIL~~
+
+~~* ImageMagick with Python Example: https://github.com/jinpark/imageresizer~~
+
+~~* ImageMagick Wand API Documentations: http://docs.wand-py.org/en/0.2.4/index.html~~
+
+~~* PIL: http://effbot.org/zone/pil-index.htm~~
+
 ## Troubleshooting 
 
 ### Nginx
@@ -91,7 +98,7 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 
 * Does not receive from NGINX: --bind 0.0.0.0:8000 
 
-## Troubleshooting Vagrant/Linux
+##  Vagrant/Linux
 * Network testing: Vagrant by default creates multiple interfaces, hence use ping -I <specific hostonly/private interface> to avoid confusion.
 
 * Network interface config: /etc/network/interfaces
@@ -107,6 +114,8 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 * ConnectTimeout: HTTPSConnectionPool(host='s3.amazonaws.com', port=443): (a) Enable HTTP & HTTPS in Inbound ACL (b) Increase the timeout in requests.get (http://docs.python-requests.org/en/master/user/quickstart/#timeouts)
 
 * Change Computer Name in Ubuntu: https://aws.amazon.com/premiumsupport/knowledge-center/linux-static-hostname/
+
+
 
 ## Performances
 ### Siege command used by Load Test script
