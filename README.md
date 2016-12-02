@@ -1,9 +1,5 @@
-_To people who fork my repo:_  
-The repo __will not__ work on your machine or AWS off-the-shelf without understanding of the design.  
-Although absolutely no guanrantee is offered, I'm happy to answer your questions :)
-
 # CS 5356 Final Project
-By __Chris Wang__ (mw866@cornell.edu)
+By __Chris Wang__ (mw866)
 
 
 Description: An API based on Flask, Gunicorn and NGINX
@@ -70,6 +66,8 @@ https://www.vagrantup.com/docs/virtualbox/networking.html
 * AWS CLI Output Format: http://docs.aws.amazon.com/cli/latest/userguide/controlling-output.html
 
 * EC2 Public IP Addressing: ttp://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#differences
+
+* Elastic IP (Remeber to suppress public ip when creating EC2 instance): http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-eips.html
 
 ### AWS Route 53
 
