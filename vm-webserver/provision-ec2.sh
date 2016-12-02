@@ -12,7 +12,7 @@ set -x
 
 echo "Provisioning starts!"
 
-
+sudo echo "webserver" > /etc/hostname
 sudo apt-get update
 sudo apt-get install -y python-pip  python-dev imagemagick lynx
 sudo pip install --upgrade pip
