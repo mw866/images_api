@@ -15,9 +15,9 @@ sudo apt-get update
 sudo apt-get install -y nginx lynx 
 
 #Config NGINX:
-sudo cd ./one-and-done/vm-reverseproxy
-sudo ln -s  "$(pwd)/one_and_done" /etc/nginx/sites-available/
-sudo ln -s "$(pwd)/one_and_done" /etc/nginx/sites-enabled/
+sudo cd ~/one-and-done/vm-reverseproxy
+sudo ln -s "~/one_and_done" /etc/nginx/sites-available/
+sudo ln -s "~/one_and_done" /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
 
 
