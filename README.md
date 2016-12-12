@@ -127,36 +127,3 @@ $siege -t1m --concurrent=3 -b -i --file=./output/chris/siege_urls.txt --log=./ou
 ### Parameters can be tuned
 Gunicorn: --worker 3
 Python Requests: requests.get(timeout = 0.01)
-
-### Benchmark Results: 
-
-http://images-aws.afeld.me/api/num_colors?src=https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2@2x.png
-Transactions:		         353 hits
-Availability:		      100.00 %
-Elapsed time:		       59.94 secs
-Data transferred:	        0.00 MB
-Response time:		        0.51 secs
-Transaction rate:	        5.89 trans/sec
-Throughput:		        0.00 MB/sec
-Concurrency:		        2.98
-Successful transactions:         353
-Failed transactions:	           0
-Longest transaction:	        0.84
-Shortest transaction:	        0.36
-
-
-### Reference Results
- EC2 instance $siege --time 10s https://s3.amazonaws.com/startup-systems-final-images/6461517483.jpg
-Transactions:		          82 hits
-Availability:		      100.00 %
-Elapsed time:		        9.32 secs
-Data transferred:	        9.49 MB
-Response time:		        0.91 secs
-Transaction rate:	        8.80 trans/sec
-Throughput:		        1.02 MB/sec
-Concurrency:		        8.03
-Successful transactions:          82
-Failed transactions:	           0
-Longest transaction:	        1.28
-Shortest transaction:	        0.69
-
