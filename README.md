@@ -18,9 +18,9 @@ Logs files:
 ## Architecture
 * DNS: AWS Route 53
 
-* Reverse Proxy & Load Balancer (x1 VM): NGINX
+* Reverse Proxy & Load Balancer (t2.micro x1): NGINX
 
-* Web Server (x3 VM): Gunicorn
+* Web Server (t2.micro x3): Gunicorn
 
 * Web Framework: Flask
 
