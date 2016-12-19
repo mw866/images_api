@@ -1,5 +1,5 @@
-# CS 5356 Final Project
-By __Chris Wang__ (mw866)
+# Images API on AWS
+__Chris Wang__ (mw866)
 
 
 Description: An API based on Flask, Gunicorn and NGINX
